@@ -1,11 +1,11 @@
 SYSTEMC_HOME ?= /usr/local/systemc-3.0.2
 
 CXX = g++
-CXXFLAGS = -std=c++17 -I$(SYSTEMC_HOME)/include
+CXXFLAGS = -std=c++17 -Wall -I$(SYSTEMC_HOME)/include
 LDFLAGS = -L$(SYSTEMC_HOME)/lib -lsystemc
 
-TARGET = test
-SRC = test.cpp
+TARGET = riscv_tlm
+SRC = main.cpp
 
 all: $(TARGET)
 
