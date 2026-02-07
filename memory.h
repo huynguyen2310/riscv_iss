@@ -24,9 +24,11 @@ struct Memory : sc_module {
         }
 
         if(trans.is_read()){
-            *data = mem[addr/4];
+            memcpy(data, &mem[addr/4], 4);
+            cout<<"[MEM] READ addr=0x"<<hex<<addr<<" data=0x"<<*(uint32_t*)data<<endl;
         } else if (trans.is_write()){
-            mem[addr/4] = *data;
+            memcpy(&mem[addr/4], data, 4);
+            cout<<"[MEM] WRITE addr=0x"<<hex<<addr<<" data=0x"<<*(uint32_t*)data<<endl;
         } else {
             //do nothing;
         }

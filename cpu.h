@@ -26,7 +26,13 @@ struct CPU : sc_module {
         trans.set_data_ptr((unsigned char*)&data);
         trans.set_data_length(4);
 
+        cout<<"[CPU] FETCH at 0x"<<hex<<addr<<endl;
+        
         cpu_socket->b_transport(trans, delay);
+
+        if(trans.get_response_status() != TLM_OK_RESPONSE){
+            cout<<"[CPU] FETCH ERROR"<<endl;
+        }
         wait(delay);
 
         return data;
